@@ -14,7 +14,6 @@ passwordSchema
 .has().lowercase()                              // Must have lowercase letters
 .has().digits()                                // Must have at least 1 digit
 .has().not().symbols();                         // Has no symbols
-//.has().not().spaces()                           // Should not have spaces is a wrong rule to apply
 
 
 exports.signup = (req, res, next) => { // inscription du user

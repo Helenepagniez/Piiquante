@@ -17,7 +17,7 @@ passwordSchema
 
 
 exports.signup = (req, res, next) => { // inscription du user
-  if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.body.password)) { // si l'email et le mot de passe ne sont pas valides
+  if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.body.password)) { // si l'email ou le mot de passe ne sont pas valides
     return res.status(400).json({ message: 'Check your email address format and your password should be at least 8 characters long, contain uppercase, lowercase letter and digit '});
     
   } else if (emailValidator.validate(req.body.email) || passwordSchema.validate(req.body.password)) { // s'ils sont valides

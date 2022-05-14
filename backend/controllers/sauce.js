@@ -11,10 +11,9 @@ exports.createSauce = (req, res, next) => {
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,   // l'url de l'image enregistrée dans le dossier images du serveur est aussi stockée dans la bdd      
     });
     sauce.save() // la sauce est sauvegardée dans la bdd
-    .then( () => res.status(201).json({ message: 'Sauce saved'}))
+    .then( () => res.status(201).json({ message: 'Sauce sauvegardée'}))
     .catch( error => res.status(400).json({ error }))
     console.log(sauce);
-    
 };
 
 exports.modifySauce = (req, res, next) => {
@@ -24,7 +23,7 @@ exports.modifySauce = (req, res, next) => {
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     } : { ...req.body };
     Sauce.updateOne({ _id: req.params.id} , {...sauceObject, _id: req.params.id})
-    .then(()=> res.status(200).json({ message: 'Sauce modified'}))
+    .then(()=> res.status(200).json({ message: 'Sauce modifiée'}))
     .catch(()=> res.status(400).json({ error}))
 };
 
@@ -34,7 +33,7 @@ exports.deleteSauce = (req, res, next) => {
     const filename = sauce.imageUrl.split('/images/')[1]; // on récupère l'adresse de l'image
     fs.unlink(`images/${filename}`, () => { /// on la supprime du serveur
     Sauce.deleteOne({_id: req.params.id}) // on supprime la sauce de la bdd
-    .then(()=> res.status(200).json({ message: 'Sauce deleted'}))
+    .then(()=> res.status(200).json({ message: 'Sauce supprimée'}))
     .catch(error => res.status(400).json({ error}))
     });
 })
@@ -58,12 +57,12 @@ exports.likeSauce = (req, res, next) => {
     const like = req.body.like;
     if(like === 1) { // bouton j'aime
         Sauce.updateOne({_id: req.params.id}, { $inc: { likes: 1}, $push: { usersLiked: req.body.userId}, _id: req.params.id })
-        .then( () => res.status(200).json({ message: 'You like this sauce' }))
+        .then( () => res.status(200).json({ message: 'Vous aimez cette sauce' }))
         .catch( error => res.status(400).json({ error}))
 
     } else if(like === -1) { // bouton je n'aime pas
         Sauce.updateOne({_id: req.params.id}, { $inc: { dislikes: 1}, $push: { usersDisliked: req.body.userId}, _id: req.params.id })
-        .then( () => res.status(200).json({ message: 'You don\'t like this sauce' }))
+        .then( () => res.status(200).json({ message: 'Vous n’aimez pas cette sauce' }))
         .catch( error => res.status(400).json({ error}))
 
     } else {    // annulation du bouton j'aime ou alors je n'aime pas
@@ -71,13 +70,13 @@ exports.likeSauce = (req, res, next) => {
         .then( sauce => {
             if( sauce.usersLiked.indexOf(req.body.userId)!== -1){
                  Sauce.updateOne({_id: req.params.id}, { $inc: { likes: -1},$pull: { usersLiked: req.body.userId}, _id: req.params.id })
-                .then( () => res.status(200).json({ message: 'You don\'t like this sauce anymore ' }))
+                .then( () => res.status(200).json({ message: 'Vous n’aimez plus cette sauce' }))
                 .catch( error => res.status(400).json({ error}))
                 }
                 
             else if( sauce.usersDisliked.indexOf(req.body.userId)!== -1) {
                 Sauce.updateOne( {_id: req.params.id}, { $inc: { dislikes: -1 }, $pull: { usersDisliked: req.body.userId}, _id: req.params.id})
-                .then( () => res.status(200).json({ message: 'You might like this sauce now ' }))
+                .then( () => res.status(200).json({ message: 'Vous aimerez peut-être cette sauce à nouveau' }))
                 .catch( error => res.status(400).json({ error}))
                 }           
         })

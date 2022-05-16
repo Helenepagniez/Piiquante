@@ -31,6 +31,9 @@ app.use(bodyParser.json()); //bodyparser
 app.use(mongoSanitize()); // En prévention des injections
 app.use(helmet()); // helmet
 
+app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
+
+
 app.use('/images', express.static(path.join(__dirname, 'images'))); // gestion images de manière statiques
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);

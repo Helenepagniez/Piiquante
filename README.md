@@ -26,3 +26,14 @@ Implémenter le fichier .env du dossier mongoDb_connect fourni à la racine du d
 
 
 Démarrer avec `node server` ou `nodemon server`.
+
+# Lancer l'application
+Afin d'afficher la page, suivez les étapes suivantes :
+1. Cliquez sur le bouton vert "Code"
+2. Cliquez sur "Download ZIP"
+3. Extraire du zip et ouvrir dossier sur votre éditeur de code
+4. Tapez dans terminal de commande les lignes suivantes: "cd backend" puis "node server"
+5. Se rendre dans le code à travers de l'explorateur de fichiers
+6. Aller dans le dossier Frontend et faire un clic droit
+7. Choisir "Afficher plus d'options" puis "git bash here"
+8. Tapez dans le terminal le code suivant : ng serve -o

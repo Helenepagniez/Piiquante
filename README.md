@@ -1,39 +1,52 @@
-# P6-Piquante
-Construire une API sécurisée pour une appli d'avis gastronomiques.
+<div align="center">
+<img height="130px" width="auto" src="./frontend/src/assets/images/flame.png">
+</div>
 
-# Frontend
-Le frontend était fourni dans le cadre de ce projet.
+# Piiquante, application d'avis gastronomiques
+Sixième projet du parcours Développeur web d'OpenClassroom. </br> 
+L'objectif est de construire une API sécurisée pour une appli d'avis gastronomiques.
 
+Frontend : Angular Cli - SCSS - HTML
+Backend : NodeJS - MongoDB - Express - Mongoose
 
-Le projet a été généré avec [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
+<details>
+  <summary>Détails</summary>
 
+  ### Objectifs
 
-Pour faire fonctionner le projet, vous devez installer node-sass à part.
+  - Créer un compte
+  - Créer des ingrédients
+  - Ajouter des informations et photos de l'ingrédient
+  - Liker et disliker des ingrédients
+  - Intensité (doux- piquant) selon une jauge
 
+</details>
 
-Démarrer `ng serve` pour avoir accès au serveur de développement.
+<details>
+  <summary>Lancer en local</summary>
 
+  ### Cloner le projet
 
-Rendez-vous sur `http://localhost:4200/`.
+  ```bash
+    git clone https://github.com/Helenepagniez/Piiquante.git
+  ```
 
+  ### Aller dans terminal Backend
 
-L'application va se recharger automatiquement si vous modifiez un fichier source.
+  ```bash
+    npm node server
+  ```
 
-# Backend
-Les technologies utilisées pour le back: un server NodeJS, une base de données MongoDB, le framework Express et le pack Mongoose.
+  ### Installer les dépendances
 
-Implémenter le fichier .env du dossier mongoDb_connect fourni à la racine du dossier backend pour la connexion à la base de données MongoDB.
+  ```bash
+    npm install
+  ```
 
+  ### Lancer l'application
 
-Démarrer avec `node server` ou `nodemon server`.
+  ```bash
+    ng serve -o
+  ```
 
-# Lancer l'application
-Afin d'afficher la page, suivez les étapes suivantes :
-1. Cliquez sur le bouton vert "Code"
-2. Cliquez sur "Download ZIP"
-3. Extraire du zip et ouvrir dossier sur votre éditeur de code
-4. Tapez dans terminal de commande les lignes suivantes: "cd backend" puis "node server"
-5. Se rendre dans le code à travers de l'explorateur de fichiers
-6. Aller dans le dossier Frontend et faire un clic droit
-7. Choisir "Afficher plus d'options" puis "git bash here"
-8. Tapez dans le terminal le code suivant : ng serve -o
+</details>
